@@ -9,6 +9,7 @@ import {
   ImageBackground,
   ScrollView,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 import {
   SharedElement,
@@ -31,7 +32,6 @@ function HomeAnimeDetailScreen({ navigation, route }) {
     <SafeAreaView style={{ flex: 1 }}>
       <AntDesign
         name="arrowleft"
-        //name="close"
         size={28}
         style={{
           padding: 12,
@@ -75,7 +75,7 @@ function HomeAnimeDetailScreen({ navigation, route }) {
           <ScrollView
             contentContainerStyle={{
               paddingBottom: 200,
-              marginTop: 24,
+              marginTop: 48,
             }}
             showsVerticalScrollIndicator={false}
           >
