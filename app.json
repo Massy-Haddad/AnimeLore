@@ -2,11 +2,12 @@
   "name": "AnimeLore",
   "displayName": "AnimeLore",
   "expo": {
-    "name": "AnimeLore",
+    "name": "Anime Lore",
     "slug": "AnimeLore",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "AnimeLore is a simple anime, manga and manwha listing projet that i've created to learn React Native."
   }
 }
