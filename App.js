@@ -42,15 +42,17 @@ export default function App({ navigation }) {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          /*
-          options={({ navigation, route }) => ({
-            headerTitleStyle: { alignSelf: "center" },
-            title: "TOP",
-          })}
-          */
+          options={{ headerShown: false }}
         />
 
-        <Stack.Screen name="HomeAnime" component={HomeAnimeScreen} />
+        <Stack.Screen
+          name="HomeAnime"
+          component={HomeAnimeScreen}
+          options={({ navigation, route }) => ({
+            headerShown: false,
+            headerBackTitleVisible: false,
+          })}
+        />
 
         <Stack.Screen
           name="AnimeDetail"

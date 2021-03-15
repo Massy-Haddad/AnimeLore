@@ -54,7 +54,7 @@ function HomeAnimeDetailScreen({ navigation, route }) {
           style={[
             StyleSheet.absoluteFillObject,
             {
-              opacity: 0.6,
+              opacity: 0.5,
               backgroundColor: item.coverImage.color,
               height: TOP_HEADER_HEIGHT + 32,
               resizeMode: "cover",
@@ -62,9 +62,11 @@ function HomeAnimeDetailScreen({ navigation, route }) {
           ]}
         />
       </SharedElement>
-      <SharedElement id={`item.${item.id}.title`}>
-        <Text style={styles.title}>{item.title.english}</Text>
-      </SharedElement>
+      <View style={{ zIndex: 2 }}>
+        <SharedElement id={`item.${item.id}.title`}>
+          <Text style={styles.title}>{item.title.english}</Text>
+        </SharedElement>
+      </View>
       <SharedElement id={`item.${item.id}.image`} style={styles.image}>
         <Image style={styles.image} source={{ uri: item.coverImage.large }} />
       </SharedElement>
@@ -73,10 +75,11 @@ function HomeAnimeDetailScreen({ navigation, route }) {
           <ScrollView
             contentContainerStyle={{
               paddingBottom: 200,
+              marginTop: 24,
             }}
             showsVerticalScrollIndicator={false}
           >
-            <View
+            <TouchableOpacity
               style={{
                 flexDirection: "row",
                 justifyContent: "space-evenly",
@@ -87,11 +90,13 @@ function HomeAnimeDetailScreen({ navigation, route }) {
                 delay={DURATION + 1 * 100}
                 style={styles.icons}
               >
-                <AntDesign
-                  name="arrowdown"
-                  size={22}
-                  color={COLORS.secondary_text}
-                />
+                <TouchableOpacity>
+                  <AntDesign
+                    name="info"
+                    size={24}
+                    color={COLORS.secondary_text}
+                  />
+                </TouchableOpacity>
               </Animatable.View>
 
               <Animatable.View
@@ -99,11 +104,13 @@ function HomeAnimeDetailScreen({ navigation, route }) {
                 delay={DURATION + 2 * 100}
                 style={styles.icons}
               >
-                <AntDesign
-                  name="arrowdown"
-                  size={22}
-                  color={COLORS.secondary_text}
-                />
+                <TouchableOpacity>
+                  <AntDesign
+                    name="smileo"
+                    size={22}
+                    color={COLORS.secondary_text}
+                  />
+                </TouchableOpacity>
               </Animatable.View>
 
               <Animatable.View
@@ -111,19 +118,49 @@ function HomeAnimeDetailScreen({ navigation, route }) {
                 delay={DURATION + 3 * 100}
                 style={styles.icons}
               >
-                <AntDesign
-                  name="arrowdown"
-                  size={22}
-                  color={COLORS.secondary_text}
-                />
+                <TouchableOpacity>
+                  <AntDesign
+                    name="linechart"
+                    size={22}
+                    color={COLORS.secondary_text}
+                  />
+                </TouchableOpacity>
               </Animatable.View>
-            </View>
+            </TouchableOpacity>
+
             <Animatable.View
               animation="fadeInUp"
               delay={DURATION * 2 + 1 * 200}
-              style={styles.section}
+              style={styles.informationsSection}
             >
-              <Text style={styles.sectionTitle}>Resume</Text>
+              <ScrollView horizontal={true}>
+                <View style={styles.information}>
+                  <Text style={styles.sectionTitle}>Format</Text>
+                  <Text style={styles.sectionText}>{item.format}</Text>
+                </View>
+                <View style={styles.information}>
+                  <Text style={styles.sectionTitle}>Episodes</Text>
+                  <Text style={styles.sectionText}>{item.duration}</Text>
+                </View>
+                <View style={styles.information}>
+                  <Text style={styles.sectionTitle}>Status</Text>
+                  <Text style={styles.sectionText}>
+                    {item.status.toLowerCase()}
+                  </Text>
+                </View>
+                <View style={styles.information}>
+                  <Text style={styles.sectionTitle}>Year</Text>
+                  <Text style={styles.sectionText}>{item.startDate.year}</Text>
+                </View>
+              </ScrollView>
+            </Animatable.View>
+
+            <Animatable.View
+              animation="fadeInUp"
+              delay={DURATION * 2 + 2 * 200}
+              style={styles.descriptionSection}
+            >
+              <Text style={styles.sectionTitle}>Description</Text>
               <Text style={styles.sectionText}>{item.description}</Text>
             </Animatable.View>
           </ScrollView>
@@ -140,8 +177,9 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 20,
     position: "absolute",
-    top: TOP_HEADER_HEIGHT - 10 * 3,
-    left: 24,
+    top: TOP_HEADER_HEIGHT + 12,
+    left: 28,
+    width: "50%",
   },
   image: {
     zIndex: 2,
@@ -170,9 +208,22 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 50,
+    marginVertical: 24,
   },
-  section: {
+  informationsSection: {
+    flex: 1,
+    flexDirection: "row",
+    padding: 12,
+    backgroundColor: COLORS.secondary,
+    borderRadius: 12,
+    margin: 12,
+    width: "auto",
+    height: "100%",
+  },
+  information: {
+    marginHorizontal: 12,
+  },
+  descriptionSection: {
     padding: 12,
     backgroundColor: COLORS.secondary,
     borderRadius: 12,
