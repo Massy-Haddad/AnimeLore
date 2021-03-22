@@ -8,21 +8,6 @@ import HomeMangaScreen from "./HomeMangaScreen";
 import { COLORS } from "../assets/style/colors";
 
 function HomeScreen({ navigation, route }) {
-  /*
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity>
-          <Image
-            style={{ width: 30, height: 30, marginRight: 16 }}
-            source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-            borderRadius={20}
-          />
-        </TouchableOpacity>
-      ),
-    });
-  }, [navigation]);
-  */
 
   const Tab = createMaterialTopTabNavigator();
 
